@@ -1,0 +1,128 @@
+variables:
+	{z::1} = "소1" #좀비 1랩
+	{z::2} = "10." #좀비 10랩
+	{z::3} = "20." #좀비 20랩
+	{z::4} = "30." #좀비 30랩
+	{z::5} = "40." #좀비 40랩
+	{z::6} = "50." #좀비 50랩
+	{z::7} = "60." #좀비 60랩
+	{z::8} = "70." #좀비 70랩
+	{z::9} = "80." #좀비 80랩
+	{z::10} = "90." #좀비 90랩
+	{z::11} = "100." #좀비 100랩
+	{s::1} = "돼지3" #스켈 1랩
+	{s::2} = "11." #스켈 10랩
+	{s::3} = "21." #스켈 20랩
+	{s::4} = "32." #스켈 30랩
+	{s::5} = "42." #스켈 40랩
+	{s::6} = "52." #스켈 50랩
+	{s::7} = "62." #스켈 60랩
+	{s::8} = "72." #스켈 70랩
+	{s::9} = "82." #스켈 80랩
+	{s::10} = "92." #스켈 90랩
+	{s::11} = "102." #스켈 100랩
+	{s::1} = "5." #크리퍼 1랩
+	{c::2} = "12." #크리퍼 10랩
+	{c::3} = "23." #크리퍼 20랩
+	{c::4} = "34." #크리퍼 30랩
+	{c::5} = "44." #크리퍼 40랩
+	{c::6} = "54." #크리퍼 50랩
+	{c::7} = "64." #크리퍼 60랩
+	{c::8} = "74." #크리퍼 70랩
+	{c::9} = "84." #크리퍼 80랩
+	{c::10} = "94." #크리퍼 90랩
+	{c::11} = "104." #크리퍼 100랩
+	{e::1} = "13." #엔더맨 1랩
+	{e::2} = "26." #엔더맨 10랩
+	{e::3} = "36." #엔더맨 20랩
+	{e::4} = "46." #엔더맨 30랩
+	{e::5} = "56." #엔더맨 40랩
+	{e::6} = "54." #엔더맨 50랩
+	{e::7} = "66." #엔더맨 60랩
+	{e::8} = "76." #엔더맨 70랩
+	{e::9} = "86." #엔더맨 80랩
+	{e::10} = "96." #엔더맨 90랩
+	{e::11} = "106." #엔더맨 100랩
+	{sl::1} = "9." #슬라임 1랩
+	{sl::2} = "14." #슬라임 10랩
+	{sl::3} = "22." #슬라임 20랩
+	{sl::4} = "38." #슬라임 30랩
+	{sl::5} = "48." #슬라임 40랩
+	{sl::6} = "58." #슬라임 50랩
+	{sl::7} = "68." #슬라임 60랩
+	{sl::8} = "78." #슬라임 70랩
+	{sl::9} = "88." #슬라임 80랩
+	{sl::10} = "98." #슬라임 90랩
+	{sl::11} = "108." #슬라임 100랩
+	{w::1} = "4." #마녀 1랩
+	{w::2} = "15." #마녀 10랩
+	{w::3} = "28." #마녀 20랩
+	{w::4} = "37." #마녀 30랩
+	{w::5} = "49." #마녀 40랩
+	{w::6} = "57." #마녀 50랩
+	{w::7} = "61." #마녀 60랩
+	{w::8} = "73." #마녀 70랩
+	{w::9} = "83." #마녀 80랩
+	{w::10} = "93." #마녀 90랩
+	{w::11} = "103." #마녀 100랩
+	{sp::1} = "6." #거미 1랩
+	{sp::2} = "17." #거미 10랩
+	{sp::3} = "25." #거미 20랩
+	{sp::4} = "39." #거미 30랩
+	{sp::5} = "45." #거미 40랩
+	{sp::6} = "49." #거미 50랩
+	{sp::7} = "69." #거미 60랩
+	{sp::8} = "79." #거미 70랩
+	{sp::9} = "89." #거미 80랩
+	{sp::10} = "99." #거미 90랩
+	{sp::11} = "109." #거미 100랩
+command /tt:	
+	trigger:
+		send "%{sp::11}%" to console
+
+on spawn:
+	if event-world is "야생":
+		cancel event
+		set {_lv} to random integer between 1 and 11 
+		if "%event-entity%" is "Zombie":
+			set {_loc} to event-location
+			set {_world} to event-world
+			set {_mt} to {z::%{_lv}%} 
+			replace "." with "" in {_mt}
+			set {_imsi} to spawn mythicmob {_mt} at location {_loc} in world {_world}
+		else if "%event-entity%" is "Skeleton":
+			set {_loc} to event-location
+			set {_world} to event-world
+			set {_mt} to {s::%{_lv}%} 
+			replace "." with "" in {_mt}
+			set {_imsi} to spawn mythicmob {_mt} at location {_loc} in world {_world}
+		else if "%event-entity%" is "Creeper":
+			set {_loc} to event-location
+			set {_world} to event-world
+			set {_mt} to {c::%{_lv}%} 
+			replace "." with "" in {_mt}
+			set {_imsi} to spawn mythicmob {_mt} at location {_loc} in world {_world}
+		else if "%event-entity%" is "Ender man":
+			set {_loc} to event-location
+			set {_world} to event-world
+			set {_mt} to {e::%{_lv}%} 
+			replace "." with "" in {_mt}
+			set {_imsi} to spawn mythicmob {_mt} at location {_loc} in world {_world}
+		else if "%event-entity%" is "slime":
+			set {_loc} to event-location
+			set {_world} to event-world
+			set {_mt} to {s::%{_lv}%} 
+			replace "." with "" in {_mt}
+			set {_imsi} to spawn mythicmob {_mt} at location {_loc} in world {_world}
+		else if "%event-entity%" is "witch":
+			set {_loc} to event-location
+			set {_world} to event-world
+			set {_mt} to {w::%{_lv}%} 
+			replace "." with "" in {_mt}
+			set {_imsi} to spawn mythicmob {_mt} at location {_loc} in world {_world}
+		else if "%event-entity%" is "Spider":
+			set {_loc} to event-location
+			set {_world} to event-world
+			set {_mt} to {sp::%{_lv}%}
+			replace "." with "" in {_mt}
+			set {_imsi} to spawn mythicmob {_mt} at location {_loc} in world {_world}
